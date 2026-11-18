@@ -21,11 +21,11 @@ under `docs/`.
    └────────────────────┘   └──────────────────────┘
 ```
 
-Every one of the 23 tools is a thin typed wrapper over a Quranpedia API route,
+Every one of the 26 tools is a thin typed wrapper over a Quranpedia API route,
 reaching the external service through a shared typed client:
 
 ```
-   src/tools/*.ts (23 tools, mirroring API routes)
+   src/tools/*.ts (26 tools, mirroring API routes)
         │
         ▼
    src/quranpedia-client.ts ─────>  api.quranpedia.net (HTTPS /v1)
@@ -47,7 +47,7 @@ Then it dispatches to either `runStdio()` or `runHttp(opts)`. Both call
 `createServer()` from `create-server.ts`, which:
 
 1. Constructs a fresh `McpServer({ name: 'quranpedia-mcp', version: VERSION })`.
-2. Calls `registerTools(server)`, which registers all 23 tools in alphabetical
+2. Calls `registerTools(server)`, which registers all 26 tools in alphabetical
    order for a stable `tools/list` output.
 
 Because both transports share the same `createServer()` + `registerTools()` path,

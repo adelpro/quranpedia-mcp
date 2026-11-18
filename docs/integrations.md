@@ -90,7 +90,7 @@ hard requirements; all of them are satisfied by this server:
    exact strings.
 3. **Explicit tool annotations** — every tool declares `readOnlyHint: true`,
    `destructiveHint: false`, `idempotentHint: true`, and `openWorldHint: true`
-   (all 23 tools contact the external Quranpedia API).
+   (all 26 tools contact the external Quranpedia API).
 4. **No localhost / temporary tunnels** — the endpoint is a stable Cloudflare-fronted
    subdomain.
 

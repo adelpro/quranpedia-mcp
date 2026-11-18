@@ -10,7 +10,7 @@ hallucination-free access to the Quran — **mushafs, ayahs, surahs, tafsir,
 translations, books, fatwas, notes, topics, reciters, and categories** — over
 **stdio** and **Streamable HTTP**.
 
-> Explore the Quran through 23 MCP tools — mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories. Hosted at mcp.quranpedia.net.
+> Explore the Quran through 26 MCP tools — mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories. Hosted at mcp.quranpedia.net.
 > Instead of relying on an AI to "hallucinate" or predict Quranic content, this
 > tool routes every request to the Quranpedia API
 > (https://api.quranpedia.net/v1). The AI handles the natural language; the
@@ -32,7 +32,7 @@ CORS-enabled for any client.
 
 - 🔌 **MCP compatible** — Claude Desktop, Claude Web, ChatGPT, Cursor, VS Code, and others.
 - 🌐 **Two transports** — stdio for local integrations, Streamable HTTP for remote/hosted.
-- 🔍 **Twenty-three tools** — mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories — all backed by the Quranpedia API.
+- 🔍 **Twenty-six tools** — mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories — all backed by the Quranpedia API.
 - 📖 **Accurate results** — every answer comes from the Quranpedia API; no LLM in the loop. Each response carries a `source` URL so it can be attributed to its upstream endpoint.
 - 🛡️ **Hardened HTTP** — host allow-list, per-IP rate limit, body cap, session reaper, `/health`.
 - 🗄️ **Shared TTL cache** — responses cached in memory (and optionally on disk) for 30 days, so repeat calls are instant.
@@ -73,7 +73,7 @@ docker compose up --build
 
 - Node.js 20+ (LTS recommended)
 - npm, pnpm, or yarn
-- Network access to `api.quranpedia.net` — required for **all** 23 tools (there is no bundled dataset).
+- Network access to `api.quranpedia.net` — required for **all** 26 tools (there is no bundled dataset).
 
 ## License
 

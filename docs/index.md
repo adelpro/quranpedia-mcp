@@ -8,7 +8,7 @@ clients fast, accurate, hallucination-free access to the Quran — mushafs, ayah
 surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and
 categories — all backed by the [Quranpedia API](https://api.quranpedia.net/v1) API.
 
-> Explore the Quran through 23 MCP tools — mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories. Hosted at mcp.quranpedia.net.
+> Explore the Quran through 26 MCP tools — mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories. Hosted at mcp.quranpedia.net.
 
 The server is publicly hosted at **<https://mcp.quranpedia.net>** (Cloudflare-fronted, stable
 subdomain of `Quranpedia.net`) and exposes its full tool surface over both
@@ -42,7 +42,7 @@ MCP client that supports the stdio transport.
 
 ## What can the server do?
 
-Twenty-three tools, all read-only and all backed by the Quranpedia API
+Twenty-six tools, all read-only and all backed by the Quranpedia API
 (`https://api.quranpedia.net/v1`). Each tool mirrors the API route it calls and
 is annotated `openWorldHint: true`:
 

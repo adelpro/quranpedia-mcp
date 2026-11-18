@@ -45,7 +45,7 @@ quranpedia-mcp/
     ├── quranpedia-client.ts    # Typed Quranpedia API client + env config
     ├── quranpedia-cache.ts     # TTL cache: memory + optional disk layer
     ├── version.ts               # Reads version from package.json
-    └── tools/                   # 23 tools, one file each + index.ts + _shared.ts
+    └── tools/                   # 26 tools, one file each + index.ts + _shared.ts
 ```
 
 ---
@@ -94,7 +94,7 @@ of the existing MCP registry (`server.json`) and Smithery (`smithery.yaml`) list
 | Wire      | JSON-RPC over stdin/stdout of a child process                                        | JSON-RPC over HTTPS `POST` + SSE stream                                                                                                                                                     |
 | Spawn     | client starts `node dist/server.js` or `npx -y quranpedia-mcp`                       | client connects to `https://mcp.quranpedia.net/`                                                                                                                                            |
 | Use case  | local dev, desktop apps (Claude Desktop, Cursor, Zed) — no server to run or maintain | remote/hosted, multi-user, browser clients, ChatGPT developer mode — anywhere the server can't be spawned locally                                                                           |
-| Auth      | none (local process)                                                                 | none — open endpoint, Cloudflare-fronted; acceptable here since all 23 tools are read-only against a public API, but worth stating explicitly rather than leaving as an implicit assumption |
+| Auth      | none (local process)                                                                 | none — open endpoint, Cloudflare-fronted; acceptable here since all 26 tools are read-only against a public API, but worth stating explicitly rather than leaving as an implicit assumption |
 | Hardening | trust your own machine                                                               | host allow-list, per-IP rate limit, session TTL                                                                                                                                             |
 
 ---
@@ -168,7 +168,7 @@ carries a `source: {provider, url}` block for attribution.
 | `test`                     | `yarn build && yarn test:stdio && yarn test:http`          |
 | `test:stdio` / `test:http` | E2E against compiled server (spawns MCP client)            |
 | `check:submission`         | ChatGPT developer-mode pre-submission linter               |
-| `inspect`                  | MCP Inspector web UI — browse & call the 23 tools (§7)     |
+| `inspect`                  | MCP Inspector web UI — browse & call the 26 tools (§7)     |
 | `prepare`                  | `husky` (installs git hooks on `yarn install`)             |
 
 ### Dependencies (runtime, 2)
@@ -192,7 +192,7 @@ Also: `bin: quranpedia-mcp → dist/server.js` (npm package is runnable via `npx
 
 `yarn inspect` compiles `dist/` first (it runs `yarn build`), then launches the
 **MCP Inspector** — an interactive web UI that connects to the local build over
-stdio. You can browse all 23 tools, inspect their input schemas, and call them
+stdio. You can browse all 26 tools, inspect their input schemas, and call them
 one by one against the live Quranpedia API, no MCP client required:
 
 ```bash

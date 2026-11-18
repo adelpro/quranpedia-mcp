@@ -333,7 +333,7 @@ quranpedia-mcp/
 │   ├── http.ts                  # Streamable HTTP transport
 │   ├── version.ts
 │   └── tools/
-│       ├── index.ts             # registerTools() — wires all 23 tools
+│       ├── index.ts             # registerTools() — wires all 26 tools
 │       ├── _shared.ts           # jsonOk / jsonError / quranpediaOk / annotations
 │       ├── get-ayah-book-content.ts
 │       ├── get-ayah-options.ts

@@ -1,6 +1,6 @@
 # Tools reference
 
-Every tool exposed by `quranpedia-mcp`. All 23 tools are read-only, typed
+Every tool exposed by `quranpedia-mcp`. All 26 tools are read-only, typed
 wrappers over the Quranpedia API (`https://api.quranpedia.net/v1`) — no state is
 mutated and no data is written. Every tool is annotated `openWorldHint: true`
 because each one contacts an external service.
@@ -23,7 +23,7 @@ because each one contacts an external service.
 
 ## Tool annotations
 
-All 23 tools declare the same four hints:
+All 26 tools declare the same four hints:
 
 | Annotation | Value | Why |
 | --- | --- | --- |
