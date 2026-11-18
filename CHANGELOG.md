@@ -20,6 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.prettierignore` (`node_modules`, `dist`) so Prettier never formats the
   committed build output.
 
+## [2.3.0]
+
+### Added
+
+- `compare_ayah_books` — read one ayah from two to five books concurrently and
+  return them side by side, which is how tafsir is actually read. Books that
+  cannot be read are reported in `unavailable` rather than failing the call, so
+  one bad id does not cost the rest of the comparison.
 ## [2.2.0]
 
 ### Added

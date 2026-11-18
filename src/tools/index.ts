@@ -1,4 +1,5 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { registerCompareAyahBooks } from './compare-ayah-books.js';
 import { registerGetAyahBookContent } from './get-ayah-book-content.js';
 import { registerGetAyahContent } from './get-ayah-content.js';
 import { registerGetAyahOptions } from './get-ayah-options.js';
@@ -30,6 +31,7 @@ import { registerSearch } from './search.js';
  * Order is alphabetical for stable `tools/list` output.
  */
 export function registerTools(server: McpServer): void {
+  registerCompareAyahBooks(server);
   registerGetAyahBookContent(server);
   registerGetAyahContent(server);
   registerGetAyahOptions(server);

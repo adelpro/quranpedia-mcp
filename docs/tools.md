@@ -52,6 +52,76 @@ All 23 tools declare the same four hints:
 
 ---
 
+## `compare_ayah_books`
+
+Title: **Compare Ayah Books**
+
+Read one ayah from several books at once and return them side by side.
+
+| Field | Value |
+| --- | --- |
+| Description | "Read one ayah from several books at once and return them side by side, for comparing how two to five tafsirs treat the same verse. Get candidate book ids from get_ayah_content with service tafsir. Books with no content for the ayah come back listed as unavailable." (262 chars) |
+| Annotations | `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true`, `openWorldHint: true` |
+
+### Input
+
+```json
+{
+  "surah":    "integer 1-114",
+  "ayah":     "integer 1-286",
+  "book_ids": "array of 2-5 book ids"
+}
+```
+
+Duplicate ids are collapsed, so the same book asked for twice costs one request
+and appears once rather than being compared with itself.
+
+### Output
+
+```json
+{
+  "source": { "provider": "quranpedia" },
+  "ayah": "2:255",
+  "requested": [3, 136, 4],
+  "books": [
+    {
+      "book_id": 3,
+      "source": "https://api.quranpedia.net/v1/ayah/2/255/book/3",
+      "book": { "id": 3, "name": "...", "author": { "...": "..." } },
+      "content": [{ "text": "...", "part": "1", "page": 110 }]
+    }
+  ],
+  "unavailable": [{ "book_id": 99999999, "reason": "Book not found" }]
+}
+```
+
+Each entry carries its own `source`, because a comparison has one url per book
+rather than the single url `quranpediaOk()` attaches.
+
+### Partial results are still results
+
+Books are fetched concurrently, and a book that cannot be read is reported in
+`unavailable` rather than thrown. One unreachable book out of five should not
+cost the other four — a partial comparison is still useful, and the model is
+told exactly what is missing and why.
+
+### Finding book ids
+
+`get_ayah_content` with `service: "tafsir"` lists every tafsir book that covers
+the ayah — 125 of them for 2:255, including al-Ṭabarī (4), Ibn Kathīr (136) and
+al-Saʿdī (3). Discover there, compare here.
+
+### Try it
+
+```bash
+curl -X POST https://mcp.quranpedia.net/ \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"compare_ayah_books","arguments":{"surah":2,"ayah":255,"book_ids":[3,136,4]}}}'
+```
+
+---
+
 ## `get_ayah_book_content`
 
 Title: **Get Ayah Book Content**

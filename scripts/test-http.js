@@ -37,6 +37,7 @@ function waitForPort() {
 }
 
 const REQUIRED_TOOLS = [
+  'compare_ayah_books',
   'get_ayah_book_content',
   'get_ayah_content',
   'get_ayah_options',
@@ -348,6 +349,35 @@ async function main() {
   }
 
   const sessionId = transport.sessionId;
+  // compare_ayah_books — several books for one ayah, side by side
+  const compared = await callTool(client, 'compare_ayah_books', { surah: 2, ayah: 255, book_ids: [3, 136, 4] });
+  const comparedPayload = parsePayload(compared);
+  assert(comparedPayload.ayah === '2:255', 'compare_ayah_books should echo the ayah reference');
+  assert(
+    Array.isArray(comparedPayload.books) && comparedPayload.books.length >= 1,
+    'compare_ayah_books(2:255) should return at least one book',
+  );
+  assert(
+    comparedPayload.books.every((b) => typeof b.book_id === 'number' && typeof b.source === 'string'),
+    'each compared book should carry its own book_id and source url',
+  );
+  assert(
+    Array.isArray(comparedPayload.unavailable),
+    'compare_ayah_books should report unavailable books rather than failing',
+  );
+
+  // A book that has nothing for the ayah is reported, not thrown
+  const partial = await callTool(client, 'compare_ayah_books', { surah: 2, ayah: 255, book_ids: [3, 99999999] });
+  const partialPayload = parsePayload(partial);
+  assert(partial.isError !== true, 'compare_ayah_books should survive an unusable book id');
+  assert(
+    partialPayload.books.length + partialPayload.unavailable.length === 2,
+    'every requested book should appear in books or unavailable',
+  );
+
+  // Negative: fewer than two books is not a comparison
+  const tooFew = await callTool(client, 'compare_ayah_books', { surah: 2, ayah: 255, book_ids: [3] });
+  assert(tooFew.isError === true, 'compare_ayah_books with one book should return isError');
   // get_changes — the delta-sync feed, deliberately uncached
   const changes = await callTool(client, 'get_changes', { since: '2026-08-09' });
   const changesPayload = parsePayload(changes);

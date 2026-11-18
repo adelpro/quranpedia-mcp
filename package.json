@@ -1,7 +1,7 @@
 {
   "name": "quranpedia-mcp",
-  "version": "2.2.0",
-  "description": "Explore the Quran through 25 MCP tools backed by the Quranpedia API \u2014 mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories. Hosted at mcp.quranpedia.net.",
+  "version": "2.3.0",
+  "description": "Explore the Quran through 26 MCP tools backed by the Quranpedia API \u2014 mushafs, ayahs, surahs, tafsir, translations, books, fatwas, notes, topics, reciters, and categories. Hosted at mcp.quranpedia.net.",
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
